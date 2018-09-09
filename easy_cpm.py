@@ -67,7 +67,7 @@ class CPM(object):
             indices = subset[person_id][:-2].astype(int).tolist()
             coords.append(candidate[indices].astype(int))
 
-        return coords
+        return coords, to_plot
 
 
 if __name__ == "__main__":
