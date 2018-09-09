@@ -61,7 +61,13 @@ class CPM(object):
         canvas, to_plot, candidate, subset = decode_pose(
             img, param, heatmap, paf)
 
-        return candidate, subset, paf
+        # post processing
+        coords = []  # per person
+        for person_id in range(len(subset)):
+            indices = subset[person_id][:-2].astype(int).tolist()
+            coords.append(candidate[indices].astype(int))
+
+        return coords
 
 
 if __name__ == "__main__":
